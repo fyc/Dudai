@@ -7,7 +7,7 @@ public class JYDuDaiTokenBean {
      */
 
     private int state;
-    private String user_id;
+    private String userId;
 
     public int getState() {
         return state;
@@ -17,11 +17,11 @@ public class JYDuDaiTokenBean {
         this.state = state;
     }
 
-    public String getUser_id() {
-        return user_id;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setUser_id(String user_id) {
-        this.user_id = user_id;
+    public void setUserId(String user_id) {
+        this.userId = user_id;
     }
 }

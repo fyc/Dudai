@@ -68,7 +68,7 @@ public class DuDaiParamHelper {
         deviceMap.put("android_imei", DeviceUtil.getImei());
         deviceMap.put("android_adv_id", "unknown");
         deviceMap.put("android_id", DeviceUtil.getAndroid_Id());
-        deviceMap.put("device_name", DeviceUtil.getDeviceName());
+        deviceMap.put("device_name", AndroidUtil.getDeviceName());
         deviceMap.put("os_version", Build.VERSION.RELEASE);
         deviceMap.put("sdk_version", String.valueOf(Build.VERSION.SDK_INT));
         deviceMap.put("os_type", "android");
