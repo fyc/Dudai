@@ -20,6 +20,7 @@ import android.os.SystemClock;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.telephony.TelephonyManager;
+import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.WindowManager;
 import android.webkit.WebView;
@@ -90,6 +91,7 @@ public class AndroidUtil {
      * <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
      */
     public static String getIPAddress(Context context) {
+        String address = "0.0.0.0";
         NetworkInfo info = ((ConnectivityManager) context
                 .getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo();
         if (info != null && info.isConnected()) {
@@ -100,7 +102,7 @@ public class AndroidUtil {
                         for (Enumeration<InetAddress> enumIpAddr = intf.getInetAddresses(); enumIpAddr.hasMoreElements(); ) {
                             InetAddress inetAddress = enumIpAddr.nextElement();
                             if (!inetAddress.isLoopbackAddress() && inetAddress instanceof Inet4Address) {
-                                return inetAddress.getHostAddress();
+                                address = inetAddress.getHostAddress();
                             }
                         }
                     }
@@ -112,13 +114,13 @@ public class AndroidUtil {
                 WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
                 WifiInfo wifiInfo = wifiManager.getConnectionInfo();
                 //调用方法将int转换为地址字符串
-                String ipAddress = intIP2StringIP(wifiInfo.getIpAddress());//得到IPV4地址
-                return ipAddress;
+                address = intIP2StringIP(wifiInfo.getIpAddress());//得到IPV4地址
             }
         } else {
             //当前无网络连接,请在设置中打开网络
+            address = "0.0.0.0";
         }
-        return null;
+        return TextUtils.isEmpty(address) ? "0.0.0.0" : address;
     }
 
     /**
@@ -228,7 +230,7 @@ public class AndroidUtil {
             return "unknown";
         }
         String imsi = mTm.getSubscriberId();
-        return imsi;
+        return TextUtils.isEmpty(imsi) ? "unknown" : imsi;
     }
 
     /**
@@ -261,7 +263,7 @@ public class AndroidUtil {
 
     public static String getUserAgent(Context context) {
         String useragent = new WebView(context).getSettings().getUserAgentString();
-        return useragent;
+        return TextUtils.isEmpty(useragent) ? "unknown" : useragent;
     }
 
     public static String getBtAddressByReflection() {
@@ -272,7 +274,7 @@ public class AndroidUtil {
             field.setAccessible(true);
             Object bluetoothManagerService = field.get(bluetoothAdapter);
             if (bluetoothManagerService == null) {
-                return null;
+                return "00:00:00:00:00:00";
             }
             Method method = bluetoothManagerService.getClass().getMethod("getAddress");
             if (method != null) {
@@ -290,7 +292,7 @@ public class AndroidUtil {
         } catch (InvocationTargetException e) {
             e.printStackTrace();
         }
-        return null;
+        return "00:00:00:00:00:00";
     }
 
     public static int getBatteryLevel(Context context) {
@@ -310,7 +312,7 @@ public class AndroidUtil {
      */
 
     public static int getScreenBrightness(Context context) {
-        int value = 0;
+        int value = -1;
         ContentResolver cr = context.getContentResolver();
         try {
             value = Settings.System.getInt(cr, Settings.System.SCREEN_BRIGHTNESS);
@@ -352,7 +354,7 @@ public class AndroidUtil {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return null;
+        return "unknown";
     }
 
     public static String getCurrentTimeZone() {
@@ -390,25 +392,30 @@ public class AndroidUtil {
     }
 
     public static String getDeviceName() {
-        String manufacturer = Build.MANUFACTURER;
-        String model = Build.MODEL;
-        if (model.startsWith(manufacturer)) {
-            return capitalize(model);
-        } else {
-            return capitalize(manufacturer) + " " + model;
-        }
+        BluetoothAdapter myDevice = BluetoothAdapter.getDefaultAdapter();
+        String deviceName = myDevice.getName();
+        return TextUtils.isEmpty(deviceName) ? "unknown" : deviceName;
     }
-
-    private static String capitalize(String s) {
-        if (s == null || s.length() == 0) {
-            return "";
-        }
-        char first = s.charAt(0);
-        if (Character.isUpperCase(first)) {
-            return s;
-        } else {
-            return Character.toUpperCase(first) + s.substring(1);
-        }
-    }
+//    public static String getDeviceName() {
+//        String manufacturer = Build.MANUFACTURER;
+//        String model = Build.MODEL;
+//        if (model.startsWith(manufacturer)) {
+//            return capitalize(model);
+//        } else {
+//            return capitalize(manufacturer) + " " + model;
+//        }
+//    }
+//
+//    private static String capitalize(String s) {
+//        if (s == null || s.length() == 0) {
+//            return "";
+//        }
+//        char first = s.charAt(0);
+//        if (Character.isUpperCase(first)) {
+//            return s;
+//        } else {
+//            return Character.toUpperCase(first) + s.substring(1);
+//        }
+//    }
 }
 

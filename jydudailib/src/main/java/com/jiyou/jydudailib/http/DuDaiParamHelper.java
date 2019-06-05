@@ -2,6 +2,7 @@ package com.jiyou.jydudailib.http;
 
 import android.content.Context;
 import android.os.Build;
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.jiyou.jydudailib.config.JYRoleParamManager;
@@ -20,8 +21,8 @@ import java.util.TreeMap;
 
 public class DuDaiParamHelper {
     public static String CP_SECRET = "4ad153cd297acb33ef907f1fa13319be";
-    public static String GAME_SECRET = "36251974e5a3909ba148bb47d6477156";
-
+    //    public static String GAME_SECRET = "36251974e5a3909ba148bb47d6477156";
+    public static String GAME_SECRET = "3ac8af80e6e0e0b3eb0a8a84a02ad400";
 
     private DuDaiParamHelper() {
 
@@ -42,7 +43,7 @@ public class DuDaiParamHelper {
     public static SortedMap<String, String> duDaiMapParam(Context context) {
         SortedMap paramObj = new TreeMap<>();
         SortedMap agentMap = new TreeMap<>();
-        agentMap.put("channel_id", Integer.valueOf(LoadConfig.JY_CHANNEL_ID));
+        agentMap.put("channel_id", LoadConfig.JY_CHANNEL_ID);
         agentMap.put("cp_id", LoadConfig.JY_CP_ID);
         paramObj.put("agent", agentMap);
 
@@ -53,7 +54,7 @@ public class DuDaiParamHelper {
         paramObj.put("game", gameMap);
 
         SortedMap roleMap = new TreeMap<>();
-        roleMap.put("id", Integer.valueOf(JYRoleParamManager.onEnterRoleInfo.getRoleId()));
+        roleMap.put("id", JYRoleParamManager.onEnterRoleInfo.getRoleId());
         roleMap.put("name", JYRoleParamManager.onEnterRoleInfo.getRoleName());
         roleMap.put("level", JYRoleParamManager.onEnterRoleInfo.getRoleLevel());
         roleMap.put("server_id", Integer.valueOf(JYRoleParamManager.onEnterRoleInfo.getServerId()));
@@ -69,8 +70,9 @@ public class DuDaiParamHelper {
         deviceMap.put("android_adv_id", "unknown");
         deviceMap.put("android_id", DeviceUtil.getAndroid_Id());
         deviceMap.put("device_name", AndroidUtil.getDeviceName());
-        deviceMap.put("os_version", Build.VERSION.RELEASE);
-        deviceMap.put("sdk_version", String.valueOf(Build.VERSION.SDK_INT));
+        deviceMap.put("os_version", TextUtils.isEmpty(Build.VERSION.RELEASE) ? "unknown" : Build.VERSION.RELEASE);
+        ;
+        deviceMap.put("sdk_version", TextUtils.isEmpty(String.valueOf(Build.VERSION.SDK_INT)) ? "unknown" : String.valueOf(Build.VERSION.SDK_INT));
         deviceMap.put("os_type", "android");
         deviceMap.put("net_type", DeviceUtil.getNetWork());
         deviceMap.put("user_agent", AndroidUtil.getUserAgent(context));
@@ -78,11 +80,11 @@ public class DuDaiParamHelper {
         deviceMap.put("wifi_name", DeviceUtil.getWifiName());
         deviceMap.put("bluetooth", AndroidUtil.getBtAddressByReflection());
         deviceMap.put("mac", DeviceUtil.getMac());
-        deviceMap.put("brand", Build.BRAND);
-        deviceMap.put("model", Build.MODEL);
+        deviceMap.put("brand", TextUtils.isEmpty(Build.BRAND) ? "unknown" : Build.BRAND);
+        deviceMap.put("model", TextUtils.isEmpty(Build.MODEL) ? "unknown" : Build.MODEL);
         deviceMap.put("battery_level", AndroidUtil.getBatteryLevel(context));
         deviceMap.put("screen_brightness", AndroidUtil.getScreenBrightness(context));
-        deviceMap.put("cpu_type", Build.CPU_ABI);
+        deviceMap.put("cpu_type", TextUtils.isEmpty(Build.CPU_ABI) ? "unknown" : Build.CPU_ABI);
         deviceMap.put("inner_ip", AndroidUtil.getIPAddress(context));
         deviceMap.put("is_root", AndroidUtil.isRoot());
         deviceMap.put("orientation_sensor", AndroidUtil.getOritation());

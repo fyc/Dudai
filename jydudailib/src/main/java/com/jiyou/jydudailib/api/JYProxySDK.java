@@ -11,6 +11,7 @@ import com.jiyou.jydudailib.api.model.JYDPayParam;
 import com.jiyou.jydudailib.api.model.JYDRoleParam;
 import com.jiyou.jydudailib.base.IDDLogic;
 import com.jiyou.jydudailib.config.DuDaiUrlConstants;
+import com.jiyou.jydudailib.config.JYRoleParamManager;
 import com.jiyou.jydudailib.http.HttpImp;
 import com.jiyou.jydudailib.model.JYDuDaiGameUrlBean;
 import com.jiyou.jydudailib.model.JYDuDaiOrderBean;
@@ -263,18 +264,23 @@ public class JYProxySDK implements IDDLogic {
     @Override
     public void createRole(Context context, JYDRoleParam param) {
         getIDDLogicImp().createRole(context, param);
+        JYRoleParamManager.onCreateRoleInfo = param;
+        JYRoleParamManager.onEnterRoleInfo = param;
         HttpImp.duDaiLog(context, DuDaiUrlConstants.URL_DUDAI_LOG, "create_role");
     }
 
     @Override
     public void enterGame(Context context, JYDRoleParam param) {
         getIDDLogicImp().enterGame(context, param);
+        JYRoleParamManager.onEnterRoleInfo = param;
         HttpImp.duDaiLog(context, DuDaiUrlConstants.URL_DUDAI_LOG, "enter_game");
     }
 
     @Override
     public void roleUpLevel(Context context, JYDRoleParam param) {
         getIDDLogicImp().roleUpLevel(context, param);
+        JYRoleParamManager.onEnterRoleInfo = param;
+        JYRoleParamManager.onLevelUpRoleInfo = param;
         HttpImp.duDaiLog(context, DuDaiUrlConstants.URL_DUDAI_LOG, "roleu_pLevel");
     }
 

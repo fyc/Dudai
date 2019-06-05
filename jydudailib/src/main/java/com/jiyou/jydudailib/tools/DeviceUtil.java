@@ -17,6 +17,7 @@ import android.os.Build;
 import android.os.Environment;
 import android.provider.Settings.Secure;
 import android.telephony.TelephonyManager;
+import android.text.TextUtils;
 
 import com.jiyou.jydudailib.config.ExtApp;
 
@@ -165,7 +166,7 @@ public class DeviceUtil {
             OneId = getMacLocal();
             JYDLogUtil.e("getMac error");
         }
-        return OneId;
+        return TextUtils.isEmpty(OneId) ? "00:00:00:00:00:00" : OneId;
     }
 
 
@@ -280,7 +281,7 @@ public class DeviceUtil {
     public static String getAndroid_Id() {
         try {
             String andid = Secure.getString(ExtApp.app().getContentResolver(), "android_id");
-            return andid;
+            return TextUtils.isEmpty(andid) ? "unknown" : andid;
         } catch (Exception ex) {
             ex.printStackTrace();
             return "unknown";
@@ -304,7 +305,7 @@ public class DeviceUtil {
             OneId = getImeiLocal();
             JYDLogUtil.e("getImei error");
         }
-        return OneId;
+        return TextUtils.isEmpty(OneId) ? "unknown" : OneId;
     }
 
     public static UUID getDeviceUuid(Context context) {
@@ -570,7 +571,7 @@ public class DeviceUtil {
     public static String getNetWork() {
         switch (getNetType(ExtApp.app().getApplicationContext())) {
             case NET_TYPE_UNKNOW:
-                return "未知";
+                return "unknown";
             case NET_TYPE_WIFI:
                 return "wifi";
             case NET_TYPE_2G:
@@ -580,16 +581,16 @@ public class DeviceUtil {
             case NET_TYPE_4G:
                 return "4g";
             case NET_TYPE_OTHER:
-                return "其它";
+                return "unknown";
             default:
-                return "未知";
+                return "unknown";
         }
     }
 
     public static String getWifiName() {
         WifiManager wifiManager = (WifiManager) ExtApp.app().getApplicationContext().getSystemService(ExtApp.app().WIFI_SERVICE);
         WifiInfo wifiInfo = wifiManager.getConnectionInfo();
-        return wifiInfo.getSSID();
+        return TextUtils.isEmpty(wifiInfo.getSSID()) ? "unknown" : wifiInfo.getSSID();
     }
 
     @SuppressLint("ServiceCast")
