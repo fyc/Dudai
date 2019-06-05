@@ -1,0 +1,9 @@
+{
+  "JY_DU_SDK_TYPE":"com.jiyou.jydudailib.api.JYGLogicImpPlugin",
+  "JY_CHANNEL_ID": 1,
+  "JY_GAMEID": 1,
+  "JY_CP_ID": 1,
+  "JY_GAME_VERSION": "1",
+  "JY_DUDAI_HOST": "https://zeus.7yol.cn/v1",
+  "JY_GAMENAME": "游戏名"
+}
