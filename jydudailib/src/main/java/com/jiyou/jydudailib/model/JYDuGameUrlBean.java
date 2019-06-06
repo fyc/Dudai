@@ -1,6 +1,6 @@
 package com.jiyou.jydudailib.model;
 
-public class JYDuDaiGameUrlBean {
+public class JYDuGameUrlBean {
 
     /**
      * status : success

@@ -5,7 +5,7 @@ import android.os.Build;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.jiyou.jydudailib.config.JYRoleParamManager;
+import com.jiyou.jydudailib.config.JYDRoleParamManager;
 import com.jiyou.jydudailib.config.LoadConfig;
 import com.jiyou.jydudailib.tools.AndroidUtil;
 import com.jiyou.jydudailib.tools.DeviceUtil;
@@ -19,12 +19,12 @@ import java.util.Set;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
-public class DuDaiParamHelper {
+public class DuParamHelper {
     public static String CP_SECRET = "4ad153cd297acb33ef907f1fa13319be";
     //    public static String GAME_SECRET = "36251974e5a3909ba148bb47d6477156";
     public static String GAME_SECRET = "3ac8af80e6e0e0b3eb0a8a84a02ad400";
 
-    private DuDaiParamHelper() {
+    private DuParamHelper() {
 
     }
 
@@ -32,10 +32,10 @@ public class DuDaiParamHelper {
         /**
          * 静态初始化器，由JVM来保证线程安全
          */
-        public static final DuDaiParamHelper INSTANCE = new DuDaiParamHelper();
+        public static final DuParamHelper INSTANCE = new DuParamHelper();
     }
 
-    public static DuDaiParamHelper getInstance() {
+    public static DuParamHelper getInstance() {
         return SingletonHolder.INSTANCE;
     }
 
@@ -54,11 +54,11 @@ public class DuDaiParamHelper {
         paramObj.put("game", gameMap);
 
         SortedMap roleMap = new TreeMap<>();
-        roleMap.put("id", JYRoleParamManager.onEnterRoleInfo.getRoleId());
-        roleMap.put("name", JYRoleParamManager.onEnterRoleInfo.getRoleName());
-        roleMap.put("level", JYRoleParamManager.onEnterRoleInfo.getRoleLevel());
-        roleMap.put("server_id", Integer.valueOf(JYRoleParamManager.onEnterRoleInfo.getServerId()));
-        roleMap.put("server_name", JYRoleParamManager.onEnterRoleInfo.getServerName());
+        roleMap.put("id", JYDRoleParamManager.onEnterRoleInfo.getRoleId());
+        roleMap.put("name", JYDRoleParamManager.onEnterRoleInfo.getRoleName());
+        roleMap.put("level", JYDRoleParamManager.onEnterRoleInfo.getRoleLevel());
+        roleMap.put("server_id", Integer.valueOf(JYDRoleParamManager.onEnterRoleInfo.getServerId()));
+        roleMap.put("server_name", JYDRoleParamManager.onEnterRoleInfo.getServerName());
         paramObj.put("role", roleMap);
 
         SortedMap deviceMap = new TreeMap<>();

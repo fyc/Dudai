@@ -4,7 +4,7 @@ package com.jiyou.jydudailib.config;
  * URL_状态限定
  */
 
-public final class DuDaiUrlConstants {
+public final class DuUrlConstants {
 
     public static final String COOKIE_DATA = "cookieData";
 

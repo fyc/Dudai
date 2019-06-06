@@ -10,12 +10,12 @@ import com.jiyou.jydudailib.api.constants.JYDStatusCode;
 import com.jiyou.jydudailib.api.model.JYDPayParam;
 import com.jiyou.jydudailib.api.model.JYDRoleParam;
 import com.jiyou.jydudailib.base.IDDLogic;
-import com.jiyou.jydudailib.config.DuDaiUrlConstants;
-import com.jiyou.jydudailib.config.JYRoleParamManager;
+import com.jiyou.jydudailib.config.DuUrlConstants;
+import com.jiyou.jydudailib.config.JYDRoleParamManager;
 import com.jiyou.jydudailib.http.HttpImp;
-import com.jiyou.jydudailib.model.JYDuDaiGameUrlBean;
-import com.jiyou.jydudailib.model.JYDuDaiOrderBean;
-import com.jiyou.jydudailib.model.JYDuDaiTokenBean;
+import com.jiyou.jydudailib.model.JYDuGameUrlBean;
+import com.jiyou.jydudailib.model.JYDuOrderBean;
+import com.jiyou.jydudailib.model.JYDuTokenBean;
 import com.jiyou.jydudailib.tools.GsonUtils;
 import com.jiyou.jydudailib.tools.JYFactory;
 
@@ -225,7 +225,7 @@ public class JYProxySDK implements IDDLogic {
             public void callback(int code, Object response) {
                 if (code == JYDStatusCode.SUCCESS) {
                     callback.callback(code, response);
-                    HttpImp.duDaiLog(context, DuDaiUrlConstants.URL_DUDAI_LOG, "activate");
+                    HttpImp.duLog(context, DuUrlConstants.URL_DUDAI_LOG, "activate");
                 }
             }
         });
@@ -249,9 +249,9 @@ public class JYProxySDK implements IDDLogic {
 
     @Override
     public void pay(final Context context, final JYDPayParam payParam) {
-        HttpImp.duDaiOrderMethod(context, DuDaiUrlConstants.URL_DUDAI_ORDER, payParam, new JYDCallback<JYDuDaiOrderBean>() {
+        HttpImp.duOrderMethod(context, DuUrlConstants.URL_DUDAI_ORDER, payParam, new JYDCallback<JYDuOrderBean>() {
             @Override
-            public void callback(int code, JYDuDaiOrderBean bean) {
+            public void callback(int code, JYDuOrderBean bean) {
                 if (code == JYDStatusCode.SUCCESS) {
                     payParam.setCpBill(bean.getData().getOrder_sn());
                     getIDDLogicImp().pay(context, payParam);
@@ -264,39 +264,39 @@ public class JYProxySDK implements IDDLogic {
     @Override
     public void createRole(Context context, JYDRoleParam param) {
         getIDDLogicImp().createRole(context, param);
-        JYRoleParamManager.onCreateRoleInfo = param;
-        JYRoleParamManager.onEnterRoleInfo = param;
-        HttpImp.duDaiLog(context, DuDaiUrlConstants.URL_DUDAI_LOG, "create_role");
+        JYDRoleParamManager.onCreateRoleInfo = param;
+        JYDRoleParamManager.onEnterRoleInfo = param;
+        HttpImp.duLog(context, DuUrlConstants.URL_DUDAI_LOG, "create_role");
     }
 
     @Override
     public void enterGame(Context context, JYDRoleParam param) {
         getIDDLogicImp().enterGame(context, param);
-        JYRoleParamManager.onEnterRoleInfo = param;
-        HttpImp.duDaiLog(context, DuDaiUrlConstants.URL_DUDAI_LOG, "enter_game");
+        JYDRoleParamManager.onEnterRoleInfo = param;
+        HttpImp.duLog(context, DuUrlConstants.URL_DUDAI_LOG, "enter_game");
     }
 
     @Override
     public void roleUpLevel(Context context, JYDRoleParam param) {
         getIDDLogicImp().roleUpLevel(context, param);
-        JYRoleParamManager.onEnterRoleInfo = param;
-        JYRoleParamManager.onLevelUpRoleInfo = param;
-        HttpImp.duDaiLog(context, DuDaiUrlConstants.URL_DUDAI_LOG, "roleu_pLevel");
+        JYDRoleParamManager.onEnterRoleInfo = param;
+        JYDRoleParamManager.onLevelUpRoleInfo = param;
+        HttpImp.duLog(context, DuUrlConstants.URL_DUDAI_LOG, "roleu_pLevel");
     }
 
     @Override
     public void loginAuthNotify(Context context, String str) {
-        JYDuDaiTokenBean bean = GsonUtils.GsonToBean(str, JYDuDaiTokenBean.class);
+        JYDuTokenBean bean = GsonUtils.GsonToBean(str, JYDuTokenBean.class);
         if (bean.getState() == 1) {
-            HttpImp.duDaiLog(context, DuDaiUrlConstants.URL_DUDAI_LOG, "login");
+            HttpImp.duLog(context, DuUrlConstants.URL_DUDAI_LOG, "login");
         }
     }
 
     @Override
     public void getGameUrl(Context context, final JYDCallback callback) {
-        HttpImp.duDaiGameUrl(context, DuDaiUrlConstants.URL_DUDAI_GAME_URL, new JYDCallback<JYDuDaiGameUrlBean>() {
+        HttpImp.duGameUrl(context, DuUrlConstants.URL_DUDAI_GAME_URL, new JYDCallback<JYDuGameUrlBean>() {
             @Override
-            public void callback(int code, JYDuDaiGameUrlBean bean) {
+            public void callback(int code, JYDuGameUrlBean bean) {
                 if (code == JYDStatusCode.SUCCESS) {
                     callback.callback(JYDStatusCode.SUCCESS, bean.getData().getGame_url());
                 }

@@ -1,6 +1,6 @@
 package com.jiyou.jydudailib.model;
 
-public class JYDuDaiTokenBean {
+public class JYDuTokenBean {
     /**
      * state : 0
      * user_id : 585639

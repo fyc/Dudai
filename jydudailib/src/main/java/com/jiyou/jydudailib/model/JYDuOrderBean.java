@@ -1,6 +1,6 @@
 package com.jiyou.jydudailib.model;
 
-public class JYDuDaiOrderBean {
+public class JYDuOrderBean {
 
     /**
      * status : success
