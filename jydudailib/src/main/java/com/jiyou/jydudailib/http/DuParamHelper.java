@@ -72,12 +72,13 @@ public class DuParamHelper {
         deviceMap.put("device_name", AndroidUtil.getDeviceName());
         deviceMap.put("os_version", TextUtils.isEmpty(Build.VERSION.RELEASE) ? "unknown" : Build.VERSION.RELEASE);
         ;
-        deviceMap.put("sdk_version", TextUtils.isEmpty(String.valueOf(Build.VERSION.SDK_INT)) ? "unknown" : String.valueOf(Build.VERSION.SDK_INT));
+//        deviceMap.put("sdk_version", TextUtils.isEmpty(String.valueOf(Build.VERSION.SDK_INT)) ? "unknown" : String.valueOf(Build.VERSION.SDK_INT));
+        deviceMap.put("sdk_version", "1.0.3");
         deviceMap.put("os_type", "android");
         deviceMap.put("net_type", DeviceUtil.getNetWork());
         deviceMap.put("user_agent", AndroidUtil.getUserAgent(context));
         deviceMap.put("imsi", AndroidUtil.getPhoneIMSI(context));
-        deviceMap.put("wifi_name", DeviceUtil.getWifiName());
+        deviceMap.put("wifi_name", "<unknown ssid>");
         deviceMap.put("bluetooth", AndroidUtil.getBtAddressByReflection());
         deviceMap.put("mac", DeviceUtil.getMac());
         deviceMap.put("brand", TextUtils.isEmpty(Build.BRAND) ? "unknown" : Build.BRAND);
@@ -120,6 +121,8 @@ public class DuParamHelper {
             }
         }
         sb.append(dudaiKey);
+//        String str = decode2(sb.toString());
+//        String str = (String) filter(sb.toString());
         String sign = MD5Util.getMd5(sb.toString(), characterEncoding).toLowerCase();
         return sign;
     }
@@ -160,4 +163,32 @@ public class DuParamHelper {
 
         return "";
     }
+
+//    public static CharSequence filter(CharSequence source) {
+//
+//        String speChat = "[`~!@#$%^&*()+=|{}':;',\\[\\].<>/?~！@#￥%……&*（）——+|{}【】‘；：”“’。，、？]";
+//
+//        Pattern pattern = Pattern.compile(speChat);
+//
+//        Matcher matcher = pattern.matcher(source.toString());
+//
+//        if (matcher.find())
+//            return "";
+//        else
+//            return null;
+//
+//    }
+
+    public static String filter(String keyword) {
+        if (keyword != "") {
+            String[] fbsArr = {"\\", "$", "(", ")", "*", "+", ".", "[", "]", "?", "^", "{", "}", "|"};
+            for (String key : fbsArr) {
+                if (keyword.contains(key)) {
+                    keyword = keyword.replace(key, "\\" + key);
+                }
+            }
+        }
+        return keyword;
+    }
+
 }

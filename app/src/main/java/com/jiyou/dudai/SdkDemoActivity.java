@@ -113,6 +113,7 @@ public class SdkDemoActivity extends AppCompatActivity implements View.OnClickLi
     //游戏前必须首先进行初始化：
     //初始化主要进行匹配参数是否符合后台规定，一些赋值操作
     private void init() {
+//        HttpImp.testauth();
         JYProxySDK.getInstance().init(this, new JYDCallback<String>() {
             @Override
             public void callback(int code, String response) {
