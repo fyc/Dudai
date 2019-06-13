@@ -268,6 +268,7 @@ public class AndroidUtil {
 
     public static String getBtAddressByReflection() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        if (bluetoothAdapter == null) return "00:00:00:00:00:00";
         Field field = null;
         try {
             field = BluetoothAdapter.class.getDeclaredField("mService");
@@ -393,6 +394,7 @@ public class AndroidUtil {
 
     public static String getDeviceName() {
         BluetoothAdapter myDevice = BluetoothAdapter.getDefaultAdapter();
+        if (myDevice == null) return "unknown";
         String deviceName = myDevice.getName();
         return TextUtils.isEmpty(deviceName) ? "unknown" : deviceName;
     }

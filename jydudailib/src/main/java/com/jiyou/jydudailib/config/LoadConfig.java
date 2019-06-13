@@ -35,8 +35,8 @@ public class LoadConfig {
             JY_CHANNEL_ID = (int) map.get("JY_CHANNEL_ID");
             JY_GAMEID = (int) map.get("JY_GAMEID");
             JY_CP_ID = (int) map.get("JY_CP_ID");
-            JY_GAMENAME = (String) map.get("JY_GAMENAME");
-            JY_GAME_VERSION = (String) map.get("JY_GAME_VERSION");
+//            JY_GAMENAME = (String) map.get("JY_GAMENAME");
+//            JY_GAME_VERSION = (String) map.get("JY_GAME_VERSION");
             JY_DUDAI_HOST = (String) map.get("JY_DUDAI_HOST");
         } catch (Exception e) {
             e.printStackTrace();
