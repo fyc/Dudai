@@ -4,16 +4,16 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 
-import com.jiyou.gson.Gson;
-import com.jiyou.http.okhttp3.Call;
-import com.jiyou.http.okhttp3.Callback;
-import com.jiyou.http.okhttp3.FormBody;
-import com.jiyou.http.okhttp3.Headers;
-import com.jiyou.http.okhttp3.MediaType;
-import com.jiyou.http.okhttp3.OkHttpClient;
-import com.jiyou.http.okhttp3.Request;
-import com.jiyou.http.okhttp3.RequestBody;
-import com.jiyou.http.okhttp3.Response;
+import com.jiyou.jydudailib.thirdtools.gson.Gson;
+import com.jiyou.jydudailib.thirdtools.http.okhttp3.Call;
+import com.jiyou.jydudailib.thirdtools.http.okhttp3.Callback;
+import com.jiyou.jydudailib.thirdtools.http.okhttp3.FormBody;
+import com.jiyou.jydudailib.thirdtools.http.okhttp3.Headers;
+import com.jiyou.jydudailib.thirdtools.http.okhttp3.MediaType;
+import com.jiyou.jydudailib.thirdtools.http.okhttp3.OkHttpClient;
+import com.jiyou.jydudailib.thirdtools.http.okhttp3.Request;
+import com.jiyou.jydudailib.thirdtools.http.okhttp3.RequestBody;
+import com.jiyou.jydudailib.thirdtools.http.okhttp3.Response;
 import com.jiyou.jydudailib.config.ExtApp;
 import com.jiyou.jydudailib.tools.CheckNetStatueUtil;
 

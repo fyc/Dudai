@@ -2,37 +2,19 @@ package com.jiyou.jydudailib.http;
 
 import android.app.Activity;
 import android.content.Context;
-import android.os.Build;
-import android.text.TextUtils;
 
-import com.jiyou.gson.Gson;
-import com.jiyou.gson.GsonBuilder;
-import com.jiyou.gson.TypeAdapter;
-import com.jiyou.gson.internal.LinkedTreeMap;
-import com.jiyou.gson.stream.JsonReader;
-import com.jiyou.gson.stream.JsonToken;
-import com.jiyou.gson.stream.JsonWriter;
 import com.jiyou.jydudailib.api.callback.JYDCallback;
 import com.jiyou.jydudailib.api.constants.JYDStatusCode;
 import com.jiyou.jydudailib.api.model.JYDPayParam;
 import com.jiyou.jydudailib.config.DuUrlConstants;
-import com.jiyou.jydudailib.config.JYDRoleParamManager;
 import com.jiyou.jydudailib.config.LoadConfig;
 import com.jiyou.jydudailib.model.JYDuGameUrlBean;
 import com.jiyou.jydudailib.model.JYDuOrderBean;
-import com.jiyou.jydudailib.tools.AndroidUtil;
-import com.jiyou.jydudailib.tools.DeviceUtil;
 import com.jiyou.jydudailib.tools.GsonUtils;
 import com.jiyou.jydudailib.tools.ProgressBarUtil;
 import com.jiyou.jydudailib.tools.ToastUtil;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 import java.util.SortedMap;
 import java.util.TreeMap;
 

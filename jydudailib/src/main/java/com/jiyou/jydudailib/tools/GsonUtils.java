@@ -1,15 +1,15 @@
 package com.jiyou.jydudailib.tools;
 
-import com.jiyou.gson.Gson;
-import com.jiyou.gson.GsonBuilder;
-import com.jiyou.gson.JsonNull;
-import com.jiyou.gson.JsonSyntaxException;
-import com.jiyou.gson.TypeAdapter;
-import com.jiyou.gson.internal.LinkedTreeMap;
-import com.jiyou.gson.reflect.TypeToken;
-import com.jiyou.gson.stream.JsonReader;
-import com.jiyou.gson.stream.JsonToken;
-import com.jiyou.gson.stream.JsonWriter;
+import com.jiyou.jydudailib.thirdtools.gson.Gson;
+import com.jiyou.jydudailib.thirdtools.gson.GsonBuilder;
+import com.jiyou.jydudailib.thirdtools.gson.JsonNull;
+import com.jiyou.jydudailib.thirdtools.gson.JsonSyntaxException;
+import com.jiyou.jydudailib.thirdtools.gson.TypeAdapter;
+import com.jiyou.jydudailib.thirdtools.gson.internal.LinkedTreeMap;
+import com.jiyou.jydudailib.thirdtools.gson.reflect.TypeToken;
+import com.jiyou.jydudailib.thirdtools.gson.stream.JsonReader;
+import com.jiyou.jydudailib.thirdtools.gson.stream.JsonToken;
+import com.jiyou.jydudailib.thirdtools.gson.stream.JsonWriter;
 
 import org.json.JSONArray;
 import org.json.JSONException;

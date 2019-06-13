@@ -4,9 +4,9 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
 
-import com.jiyou.http.okhttp3.Interceptor;
-import com.jiyou.http.okhttp3.Request;
-import com.jiyou.http.okhttp3.Response;
+import com.jiyou.jydudailib.thirdtools.http.okhttp3.Interceptor;
+import com.jiyou.jydudailib.thirdtools.http.okhttp3.Request;
+import com.jiyou.jydudailib.thirdtools.http.okhttp3.Response;
 import com.jiyou.jydudailib.config.ExtApp;
 import com.jiyou.jydudailib.tools.SPDataUtils;
 
