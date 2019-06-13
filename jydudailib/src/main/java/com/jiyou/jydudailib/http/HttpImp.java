@@ -84,6 +84,7 @@ public class HttpImp {
         paramObj.put("channel_id", LoadConfig.JY_CHANNEL_ID + "");
         paramObj.put("cp_id", LoadConfig.JY_CP_ID + "");
         paramObj.put("ts", System.currentTimeMillis() + "");
+
         String sign = DuParamHelper.duDaiCreateSign("UTF-8", paramObj, DuParamHelper.GAME_SECRET);
         paramObj.put("sign", sign);
 

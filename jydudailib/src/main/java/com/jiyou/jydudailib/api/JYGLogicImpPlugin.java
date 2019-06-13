@@ -13,6 +13,7 @@ import com.jiyou.jydudailib.api.callback.JYDCallback;
 import com.jiyou.jydudailib.api.model.JYDPayParam;
 import com.jiyou.jydudailib.api.model.JYDRoleParam;
 import com.jiyou.jydudailib.base.IDDLogic;
+import com.jiyou.jydudailib.config.LoadConfig;
 import com.jiyou.jygeneralimp.api.JYGLogicImp;
 
 public class JYGLogicImpPlugin implements IDDLogic {
@@ -166,7 +167,12 @@ public class JYGLogicImpPlugin implements IDDLogic {
     }
 
     @Override
-    public void getGameUrl(Context context, JYDCallback callback) {
-
+    public void getGameUrl(Context context, final JYDCallback callback) {
+        JYGLogicImp.getInstance().getGameUrl(context, new JYGCallback() {
+            @Override
+            public void callback(int i, Object o) {
+                callback.callback(i, o);
+            }
+        });
     }
 }

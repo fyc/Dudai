@@ -23,7 +23,7 @@ public class DuParamHelper {
     public static String CP_SECRET = "4ad153cd297acb33ef907f1fa13319be";
     //    public static String GAME_SECRET = "36251974e5a3909ba148bb47d6477156";
     public static String GAME_SECRET = "3ac8af80e6e0e0b3eb0a8a84a02ad400";
-
+    public static String GAME_SECRET_TEst = "2702b00c0bbfa49b6c052606de78102d";
     private DuParamHelper() {
 
     }

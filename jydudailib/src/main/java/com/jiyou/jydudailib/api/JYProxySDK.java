@@ -13,10 +13,7 @@ import com.jiyou.jydudailib.base.IDDLogic;
 import com.jiyou.jydudailib.config.DuUrlConstants;
 import com.jiyou.jydudailib.config.JYDRoleParamManager;
 import com.jiyou.jydudailib.http.HttpImp;
-import com.jiyou.jydudailib.model.JYDuGameUrlBean;
 import com.jiyou.jydudailib.model.JYDuOrderBean;
-import com.jiyou.jydudailib.model.JYDuTokenBean;
-import com.jiyou.jydudailib.tools.GsonUtils;
 import com.jiyou.jydudailib.tools.JYFactory;
 
 public class JYProxySDK implements IDDLogic {
@@ -286,20 +283,26 @@ public class JYProxySDK implements IDDLogic {
 
     @Override
     public void loginAuthNotify(Context context, String str) {
-        JYDuTokenBean bean = GsonUtils.GsonToBean(str, JYDuTokenBean.class);
-        if (bean.getState() == 1) {
+//        JYDuTokenBean bean = GsonUtils.GsonToBean(str, JYDuTokenBean.class);
+//        if (bean.getState() == 1) {
             HttpImp.duLog(context, DuUrlConstants.URL_DUDAI_LOG, "login");
-        }
+//        }
     }
 
     @Override
     public void getGameUrl(Context context, final JYDCallback callback) {
-        HttpImp.duGameUrl(context, DuUrlConstants.URL_DUDAI_GAME_URL, new JYDCallback<JYDuGameUrlBean>() {
+//        HttpImp.duGameUrl(context, DuUrlConstants.URL_DUDAI_GAME_URL, new JYDCallback<JYDuGameUrlBean>() {
+//            @Override
+//            public void callback(int code, JYDuGameUrlBean bean) {
+//                if (code == JYDStatusCode.SUCCESS) {
+//                    callback.callback(JYDStatusCode.SUCCESS, bean.getData().getGame_url());
+//                }
+//            }
+//        });
+        getIDDLogicImp().getGameUrl(context, new JYDCallback() {
             @Override
-            public void callback(int code, JYDuGameUrlBean bean) {
-                if (code == JYDStatusCode.SUCCESS) {
-                    callback.callback(JYDStatusCode.SUCCESS, bean.getData().getGame_url());
-                }
+            public void callback(int code, Object response) {
+                callback.callback(code, response);
             }
         });
     }
