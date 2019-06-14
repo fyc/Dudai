@@ -16,9 +16,9 @@ public class JYProxyApplication extends JYGApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-        LoadConfig.loadConfigJson(getApplicationContext());
-        JYProxySDK.getInstance().instanceIDDLogic(LoadConfig.JY_DU_SDK_TYPE);
         ExtApp.init(this);
         SPDataUtils.init(this.getApplicationContext());
+//        LoadConfig.loadConfigJson(getApplicationContext());
+        JYProxySDK.getInstance().instanceIDDLogic(LoadConfig.JY_DU_SDK_TYPE);
     }
 }

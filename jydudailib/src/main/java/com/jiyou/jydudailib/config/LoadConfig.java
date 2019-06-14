@@ -23,6 +23,10 @@ public class LoadConfig {
     public static String JY_GAME_VERSION = "1";
     public static String JY_DUDAI_HOST = "";
 
+    static {
+        LoadConfig.loadConfigJson(ExtApp.app());
+    }
+
     public static void loadConfigJson(Context context) {
         String ConfigFile = "jydudai_config.json";
 
