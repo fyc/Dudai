@@ -59,7 +59,7 @@ dependencies {
     //    compile(name: 'yybpluginlib-release', ext: 'aar')
     //    compile(name: 'YSDK_Android_1.4.5_1078', ext: 'aar')
     //    compile(name: 'gdtpluginlib-release', ext: 'aar')
-    //    compile(name: 'toutiaopluginlib-release', ext: 'aar')
+    implementation(name: 'toutiaopluginlib-release', ext: 'aar')
     implementation project(':jydudailib')
 }
 configurations.all {
