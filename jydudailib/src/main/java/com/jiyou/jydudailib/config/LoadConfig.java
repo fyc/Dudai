@@ -19,10 +19,9 @@ public class LoadConfig {
     public static int JY_GAMEID = 1;
     public static int JY_CHANNEL_ID = 1;
     public static int JY_CP_ID = 1;
-    public static String JY_GAMENAME = "";
-    public static String JY_GAME_VERSION = "1";
+    public static String JY_GAMENAME = "神女传说";
+    public static String JY_GAME_VERSION = "170";
     public static String JY_DUDAI_HOST = "";
-
     static {
         LoadConfig.loadConfigJson(ExtApp.app());
     }

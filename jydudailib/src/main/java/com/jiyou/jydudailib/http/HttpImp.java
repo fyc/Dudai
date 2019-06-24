@@ -13,6 +13,7 @@ import com.jiyou.jydudailib.model.JYDuOrderBean;
 import com.jiyou.jydudailib.tools.GsonUtils;
 import com.jiyou.jydudailib.tools.ProgressBarUtil;
 import com.jiyou.jydudailib.tools.ToastUtil;
+import com.jiyou.jysdklib.mvp.user.UserAccountManager;
 
 import java.io.IOException;
 import java.util.SortedMap;
@@ -139,6 +140,12 @@ public class HttpImp {
     public static void duLog(final Context context, String url, String type) {
         SortedMap Param = DuParamHelper.duDaiMapParam(context);
         Param.put("type", type);
+        if(!type.equals("activate")){
+            SortedMap user = new TreeMap<>();
+            user.put("id", UserAccountManager.sUid);
+            Param.put("user", user);
+        }
+
         String sign = DuParamHelper.duDaiCreateSign("UTF-8", Param, DuParamHelper.GAME_SECRET);
         Param.put("sign", sign);
 

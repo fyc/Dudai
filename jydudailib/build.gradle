@@ -36,6 +36,6 @@ dependencies {
 //    implementation project(':jycommonlib')
 //    implementation project(':jygeneralimplib')
     implementation(name: 'jygeneralimplib-release', ext: 'aar')
-//    implementation(name: 'jysdklib-release', ext: 'aar')
+    implementation(name: 'jysdklib-release', ext: 'aar')
     implementation(name: 'toutiaopluginlib-release', ext: 'aar')
 }
