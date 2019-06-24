@@ -278,7 +278,7 @@ public class JYProxySDK implements IDDLogic {
         getIDDLogicImp().roleUpLevel(context, param);
         JYDRoleParamManager.onEnterRoleInfo = param;
         JYDRoleParamManager.onLevelUpRoleInfo = param;
-        HttpImp.duLog(context, DuUrlConstants.URL_DUDAI_LOG, "roleu_pLevel");
+        HttpImp.duLog(context, DuUrlConstants.URL_DUDAI_LOG, "role_upLevel");
     }
 
     @Override
