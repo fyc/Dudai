@@ -61,6 +61,7 @@ dependencies {
     //    compile(name: 'gdtpluginlib-release', ext: 'aar')
     implementation(name: 'toutiaopluginlib-release', ext: 'aar')
     implementation project(':jydudailib')
+    implementation(name: 'AkSDK_PayWebNative-release', ext: 'aar')
 }
 configurations.all {
     resolutionStrategy.force 'com.android.support:support-annotations:26.1.0'
