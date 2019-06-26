@@ -18,3 +18,8 @@ Android独代，该项目主要包含一个jydudailib子工程，存放所有独
     implementation(name: 'AkSDK_PayWebNative-release', ext: 'aar')
 ```
 
+## 项目代码结构介绍
+
+##### jydudailib 独代层
+![image](./images/dudai_code_pro.png)
+
