@@ -93,7 +93,7 @@ public class DuParamHelper {
         paramObj.put("device", deviceMap);
 
         paramObj.put("client_time_zone", AndroidUtil.getCurrentTimeZone());
-        paramObj.put("client_ts", System.currentTimeMillis());
+        paramObj.put("client_ts", System.currentTimeMillis()/1000);
         return paramObj;
     }
 

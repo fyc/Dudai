@@ -32,7 +32,7 @@ public class HttpImp {
         paramObj.put("cp_id", LoadConfig.JY_CP_ID);
         paramObj.put("game_name", LoadConfig.JY_GAMENAME);
         paramObj.put("game_version", LoadConfig.JY_GAME_VERSION);
-        paramObj.put("ts", System.currentTimeMillis());
+        paramObj.put("ts", System.currentTimeMillis()/1000);
         String sign = DuParamHelper.duDaiCreateSign("UTF-8", paramObj, DuParamHelper.CP_SECRET);
         paramObj.put("sign", sign);
 
@@ -66,7 +66,7 @@ public class HttpImp {
         paramObj.put("game_id", LoadConfig.JY_GAMEID + "");
         paramObj.put("channel_id", LoadConfig.JY_CHANNEL_ID + "");
         paramObj.put("cp_id", LoadConfig.JY_CP_ID + "");
-        paramObj.put("ts", System.currentTimeMillis() + "");
+        paramObj.put("ts", System.currentTimeMillis()/1000 + "");
 
         String sign = DuParamHelper.duDaiCreateSign("UTF-8", paramObj, DuParamHelper.GAME_SECRET);
         paramObj.put("sign", sign);
